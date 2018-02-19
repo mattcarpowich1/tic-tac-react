@@ -7,7 +7,7 @@ import App from './App'
 import gameReducer from './reducer.js'
 import './index.css'
 
-export const store = createStore(gameReducer, applyMiddleware(thunk))
+const store = createStore(gameReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>

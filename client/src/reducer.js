@@ -56,8 +56,8 @@ const gameReducer = (state = initialState, action) => {
       }
 
     case 'BOT_MOVE':
-      if (gameOver) { 
-        return state 
+      if (gameOver) {
+        return state
       }
 
       nextIndex = botMove(squares, botLetter)
@@ -68,7 +68,7 @@ const gameReducer = (state = initialState, action) => {
           botLetter,
           ...squares.slice(nextIndex + 1)
         ]
-        
+
         if (checkGame(nextBoard, botLetter)) {
           return {
             ...state,
