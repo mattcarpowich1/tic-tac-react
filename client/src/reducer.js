@@ -1,5 +1,5 @@
-import { checkGame } from './utils/checkGame.js'
-import { botMove } from './utils/bot.js'
+import { getScore } from './utils/checkGame.js'
+import { minimax } from './utils/bot.js'
 
 const initialState = {
   squares: [
@@ -41,7 +41,7 @@ const gameReducer = (state = initialState, action) => {
         ...squares.slice(action.index + 1)
       ]
 
-      if (checkGame(nextBoard, playerLetter)) {
+      if (getScore(nextBoard, playerLetter) >= 0) {
         return {
           ...state,
           squares: nextBoard,
@@ -60,34 +60,31 @@ const gameReducer = (state = initialState, action) => {
         return state
       }
 
-      nextIndex = botMove(squares, botLetter)
+      console.log('----------')
+      console.log(minimax(
+        ['X', 'X', '',
+        'O', 'O', 'O',
+        '', 'X', ''],
+        'X',
+        true
+      ))
 
-      if (nextIndex > -1) {
-        nextBoard = [
-          ...squares.slice(0, nextIndex),
-          botLetter,
-          ...squares.slice(nextIndex + 1)
-        ]
+      // nextBoard = 
 
-        if (checkGame(nextBoard, botLetter)) {
-          return {
-            ...state,
-            squares: nextBoard,
-            gameOver: true
-          }
-        } else {
-          return {
-            ...state,
-            squares: nextBoard,
-            players: ['PLAYER', 'BOT']
-          }
-        }
-      } else {
-        return {
-          ...state,
-          gameOver: true
-        }
-      }
+      // if (checkGame(nextBoard, botLetter) >= 0) {
+      //   console.log('ay')
+      //   return {
+      //     ...state,
+      //     squares: nextBoard,
+      //     gameOver: true
+      //   }
+      // } else {
+      //   return {
+      //     ...state,
+      //     squares: nextBoard,
+      //     players: ['PLAYER', 'BOT']
+      //   }
+      // }
 
     default:
       return state
