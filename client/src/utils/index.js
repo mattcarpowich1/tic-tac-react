@@ -25,9 +25,6 @@ export class Bot {
     } else if (ownScore === 0) {
       return 0
     } else if (oppScore > 0) {
-      if (depth === 1) {
-        console.log('here')
-      }
       return depth - 10
     }
 
@@ -35,9 +32,6 @@ export class Bot {
     const moves = this.generateNextMoves(board, letter)
     moves.forEach(m => {
       let v = this.minimax(m, this.flip(letter), depth + 1)
-      if (depth === 0) {
-        console.log(v)
-      }
       values.push(v)
     })
 
