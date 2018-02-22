@@ -1,4 +1,7 @@
-import { Bot, getScore } from './utils/'
+import { 
+  Bot, 
+  getScore 
+} from './utils/'
 
 const initialState = {
   squares: [

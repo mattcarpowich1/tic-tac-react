@@ -3,7 +3,7 @@ export class Bot {
     this.nextMove = null
     this.letter = letter
     this.minimax(board, letter, 0)
-    this.maxDepth = 2
+    this.maxDepth = 3
     return this.nextMove
   }
 
